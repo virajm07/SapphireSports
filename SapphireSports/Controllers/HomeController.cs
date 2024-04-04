@@ -23,6 +23,41 @@ namespace SapphireSports.Controllers
             return View();
         }
 
+        public IActionResult Contactus()
+        {
+            return View();
+        }
+
+        public IActionResult Cricket()
+        {
+            return View();
+        }
+
+        public IActionResult Football()
+        {
+            return View();
+        }
+
+        public IActionResult Tennis()
+        {
+            return View();
+        }
+
+        public IActionResult Rugby()
+        {
+            return View();
+        }
+
+        public IActionResult Basketball()
+        {
+            return View();
+        }
+
+        public IActionResult Apparel()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
