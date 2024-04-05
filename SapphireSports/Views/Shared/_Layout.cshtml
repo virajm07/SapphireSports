@@ -19,29 +19,34 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <nav class="navbar navbar-expand-lg navbar-transparent bg-transparent">
                         <div class="container-fluid">
-                            <a class="navbar-brand" href="Home">Sapphire Sports</a>
+                            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Sapphire Sports</a>
                             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>
                             </button>
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                     <li class="nav-item">
-                                        <a class="nav-link active" aria-current="page" href="#">Delivery</a>
+                                        <a class="nav-link active" aria-current="page" asp-area="" asp-controller="Home" asp-action="Delivery">Delivery</a>
+                                    </li>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="Home/Contactus">Contact Us</a>
+                                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Contactus">Contact Us</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Delivery">Delivery</a>
+                                    </li>
                                     </li>
                                     <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                             Categories
                                         </a>
                                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                            <li><a class="dropdown-item" href="Home/Cricket">Cricket</a></li>
-                                            <li><a class="dropdown-item" href="Home/Football">Football</a></li>
-                                            <li><a class="dropdown-item" href="Home/Tennis">Tennis</a></li>
-                                            <li><a class="dropdown-item" href="Home/Rugby">Rugby</a></li>
-                                            <li><a class="dropdown-item" href="Home/Basketball">Basketball</a></li>
-                                            <li><a class="dropdown-item" href="Home/Apparel">Apparel</a></li>
+                                            <li><a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Cricket">Cricket</a></li>
+                                            <li><a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Football">Football</a></li>
+                                            <li><a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Tennis">Tennis</a></li>
+                                            <li><a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Rugby">Rugby</a></li>
+                                            <li><a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Basketball">Basketball</a></li>
+                                            <li><a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Apparel">Apparel</a></li>
                                         </ul>
                                     </li>
                                 </ul>
