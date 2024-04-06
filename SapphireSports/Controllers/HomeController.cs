@@ -53,7 +53,7 @@ namespace SapphireSports.Controllers
             return View();
         }
 
-        public IActionResult Apparel()
+        public IActionResult Shoes()
         {
             return View();
         }
