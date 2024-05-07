@@ -6,7 +6,7 @@ var connectionString = builder.Configuration.GetConnectionString("Connection") ?
 
 builder.Services.AddDbContext<SapphireSportsContext>(options => options.UseSqlServer(connectionString));
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<SapphireSportsContext>();
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false).AddEntityFrameworkStores<SapphireSportsContext>();
 
 
 
