@@ -71,6 +71,16 @@ namespace SapphireSports.Areas.Identity.Pages.Account
         public class InputModel
         {
 
+            [Required]
+            [MaxLength(30)]
+            [Display(Name = "First Name")]
+            public string FirstName { get; set; }
+
+            [Required]
+            [MaxLength(30)]
+            [Display(Name = "Last Name")]
+            public string LastName { get; set; }
+
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
