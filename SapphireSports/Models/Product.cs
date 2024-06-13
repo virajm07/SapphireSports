@@ -21,5 +21,10 @@ namespace SapphireSports.Models
         public required string ModelName { get; set; }
 
         public required string Price { get; set; }
+
+        // Navigation properties
+        public ICollection<Categories> Categories { get; set; } = new List<Categories>(); // Categories
+        public ICollection<Cart> Carts { get; set; } = new List<Cart>(); // Carts
+        public ICollection<Payments> Payments { get; set; } = new List<Payments>(); // Payments
     }
 }

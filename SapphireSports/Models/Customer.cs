@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using AspNetCore;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace SapphireSports.Models
@@ -30,6 +31,11 @@ namespace SapphireSports.Models
 
         [Required]
         public required string Email { get; set; }
+
+        // Navigation properties
+        public ICollection<Orders> Orders { get; set; } = new List<Orders>(); // Orders
+        public ICollection<Cart> Carts { get; set; } = new List<Cart>(); // Carts
+        public ICollection<Payments> Payments { get; set; } = new List<Payments>(); // Payments
 
 
     }

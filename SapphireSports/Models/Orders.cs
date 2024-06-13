@@ -23,5 +23,12 @@ namespace SapphireSports.Models
         [Required]
         [DisplayName("Store ID")]
         public int StoreID { get; set; }
+
+        // Navigation properties
+
+        public required Customer Customer { get; set; }
+        public required Cart Cart { get; set; }
+        public required Payments Payments { get; set; }
+
     }
 }
