@@ -19,5 +19,7 @@ namespace SapphireSports.Models
 
         [Required]
         public int Quantity { get; set; }
+
+        public ICollection<Product> Products { get; set; } = new List<Product>(); // Product
     }
 }

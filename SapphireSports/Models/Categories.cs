@@ -14,5 +14,7 @@
         public required string Tennis { get; set; }
 
         public required string Shoes { get; set; }
+
+        public ICollection<Product> Products { get; set; } = new List<Product>(); // Product
     }
 }

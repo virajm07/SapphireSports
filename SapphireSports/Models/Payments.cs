@@ -19,5 +19,9 @@ namespace SapphireSports.Models
         [DisplayName("Payment Date")]
         public required DateTime PaymentDate { get; set; }
 
+        public required Customer Customer { get; set; }
+        public required Staff Staff { get; set; }
+
+
     }
 }

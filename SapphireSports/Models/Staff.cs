@@ -27,5 +27,9 @@ namespace SapphireSports.Models
 
         [Required]
         public required string Email { get; set; }
+
+
+        public required Orders Orders { get; set; }
+        public required Payments Payments { get; set; }
     }
 }
