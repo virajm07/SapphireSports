@@ -1,8 +1,11 @@
-﻿namespace SapphireSports.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace SapphireSports.Models
 {
     public class Categories
     {
 
+        [Key] public int CategoriesID { get; set; }
         public required string Cricket { get; set; }
 
         public required string Football { get; set; }

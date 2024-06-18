@@ -6,7 +6,7 @@ namespace SapphireSports.Models
     public class Orders
     {
 
-        public int OrderID { get; set; }
+        [Key] public int OrderID { get; set; }
 
         [DisplayName("Customer ID")]
         public int CustomerID { get; set; }

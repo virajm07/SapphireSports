@@ -1,4 +1,5 @@
-﻿using AspNetCore;
+﻿// Licensed to the .NET Foundation under one or more agreements.
+// The .NET Foundation licenses this file to you under the MIT license.
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
@@ -7,6 +8,7 @@ namespace SapphireSports.Models
     public class Customer
     {
 
+        [Key]
         public int CustomerID { get; set; }
 
         [Required]
@@ -33,9 +35,9 @@ namespace SapphireSports.Models
         public required string Email { get; set; }
 
         // Navigation properties
-        public ICollection<Orders> Orders { get; set; } = new List<Orders>(); // Orders
-        public ICollection<Cart> Carts { get; set; } = new List<Cart>(); // Carts
-        public ICollection<Payments> Payments { get; set; } = new List<Payments>(); // Payments
+        public ICollection<Orders> Orders { get; set; } = []; // Orders
+        public ICollection<Cart> Carts { get; set; } = []; // Carts
+        public ICollection<Payments> Payments { get; set; } = []; // Payments
 
 
     }

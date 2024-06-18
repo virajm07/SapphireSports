@@ -6,6 +6,7 @@ namespace SapphireSports.Models
     public class Staff
     {
 
+        [Key]
         public int StaffId { get; set; }
 
         [Required]
@@ -30,6 +31,6 @@ namespace SapphireSports.Models
 
 
         public required Orders Orders { get; set; }
-        public required Payments Payments { get; set; }
+        public ICollection<Payments> Payments { get; set; } = []; // Payments
     }
 }

@@ -6,6 +6,7 @@ namespace SapphireSports.Models
     public class Product
     {
 
+        [Key]
         public int ProductID { get; set; }
 
         [DisplayName("Product Name")]

@@ -1,10 +1,11 @@
 ﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace SapphireSports.Models
 {
     public class Payments
     {
-        [DisplayName("Payment ID")]
+        [Key]
         public  required int PaymentID { get; set; }
 
         [DisplayName("Customer ID")]
@@ -20,7 +21,6 @@ namespace SapphireSports.Models
         public required DateTime PaymentDate { get; set; }
 
         public required Customer Customer { get; set; }
-        public required Staff Staff { get; set; }
 
 
     }
