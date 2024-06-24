@@ -12,8 +12,8 @@ using SapphireSports.Areas.Identity.Data;
 namespace SapphireSports.Migrations
 {
     [DbContext(typeof(SapphireSportsContext))]
-    [Migration("20240618215956_ControllersCreated")]
-    partial class ControllersCreated
+    [Migration("20240624225511_tables updated")]
+    partial class tablesupdated
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -265,10 +265,13 @@ namespace SapphireSports.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CartID"));
 
-                    b.Property<int>("CustomerID")
+                    b.Property<int?>("CustomerID")
                         .HasColumnType("int");
 
                     b.Property<int>("ListPrice")
+                        .HasColumnType("int");
+
+                    b.Property<int>("OrderID")
                         .HasColumnType("int");
 
                     b.Property<int>("ProductID")
@@ -280,6 +283,9 @@ namespace SapphireSports.Migrations
                     b.HasKey("CartID");
 
                     b.HasIndex("CustomerID");
+
+                    b.HasIndex("OrderID")
+                        .IsUnique();
 
                     b.ToTable("Cart");
                 });
@@ -358,16 +364,13 @@ namespace SapphireSports.Migrations
                     b.ToTable("Customer");
                 });
 
-            modelBuilder.Entity("SapphireSports.Models.Orders", b =>
+            modelBuilder.Entity("SapphireSports.Models.Order", b =>
                 {
                     b.Property<int>("OrderID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderID"));
-
-                    b.Property<int>("CartID")
-                        .HasColumnType("int");
 
                     b.Property<int>("CustomerID")
                         .HasColumnType("int");
@@ -380,19 +383,9 @@ namespace SapphireSports.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PaymentsPaymentID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("StoreID")
-                        .HasColumnType("int");
-
                     b.HasKey("OrderID");
 
-                    b.HasIndex("CartID");
-
                     b.HasIndex("CustomerID");
-
-                    b.HasIndex("PaymentsPaymentID");
 
                     b.ToTable("Orders");
                 });
@@ -406,6 +399,9 @@ namespace SapphireSports.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PaymentID"));
 
                     b.Property<int>("CustomerID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("OrderID")
                         .HasColumnType("int");
 
                     b.Property<string>("PayAmount")
@@ -428,6 +424,8 @@ namespace SapphireSports.Migrations
                     b.HasKey("PaymentID");
 
                     b.HasIndex("CustomerID");
+
+                    b.HasIndex("OrderID");
 
                     b.HasIndex("ProductID");
 
@@ -592,36 +590,26 @@ namespace SapphireSports.Migrations
                 {
                     b.HasOne("SapphireSports.Models.Customer", null)
                         .WithMany("Carts")
-                        .HasForeignKey("CustomerID")
+                        .HasForeignKey("CustomerID");
+
+                    b.HasOne("SapphireSports.Models.Order", "Order")
+                        .WithOne("Cart")
+                        .HasForeignKey("SapphireSports.Models.Cart", "OrderID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Order");
                 });
 
-            modelBuilder.Entity("SapphireSports.Models.Orders", b =>
+            modelBuilder.Entity("SapphireSports.Models.Order", b =>
                 {
-                    b.HasOne("SapphireSports.Models.Cart", "Cart")
-                        .WithMany()
-                        .HasForeignKey("CartID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("SapphireSports.Models.Customer", "Customer")
                         .WithMany("Orders")
                         .HasForeignKey("CustomerID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SapphireSports.Models.Payments", "Payments")
-                        .WithMany()
-                        .HasForeignKey("PaymentsPaymentID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Cart");
-
                     b.Navigation("Customer");
-
-                    b.Navigation("Payments");
                 });
 
             modelBuilder.Entity("SapphireSports.Models.Payments", b =>
@@ -629,6 +617,12 @@ namespace SapphireSports.Migrations
                     b.HasOne("SapphireSports.Models.Customer", "Customer")
                         .WithMany("Payments")
                         .HasForeignKey("CustomerID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SapphireSports.Models.Order", "Order")
+                        .WithMany()
+                        .HasForeignKey("OrderID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -641,11 +635,13 @@ namespace SapphireSports.Migrations
                         .HasForeignKey("StaffId");
 
                     b.Navigation("Customer");
+
+                    b.Navigation("Order");
                 });
 
             modelBuilder.Entity("SapphireSports.Models.Staff", b =>
                 {
-                    b.HasOne("SapphireSports.Models.Orders", "Orders")
+                    b.HasOne("SapphireSports.Models.Order", "Orders")
                         .WithMany()
                         .HasForeignKey("OrdersOrderID")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -661,6 +657,12 @@ namespace SapphireSports.Migrations
                     b.Navigation("Orders");
 
                     b.Navigation("Payments");
+                });
+
+            modelBuilder.Entity("SapphireSports.Models.Order", b =>
+                {
+                    b.Navigation("Cart")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("SapphireSports.Models.Product", b =>

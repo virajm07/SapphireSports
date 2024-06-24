@@ -11,14 +11,14 @@ namespace SapphireSports.Models
         public int ProductID { get; set; }
 
         [Required]
-        public int CustomerID { get; set; }
+        public int OrderID { get; set; }
 
         [Required]
         public int ListPrice { get; set; }
 
         [Required]
         public int Quantity { get; set; }
-
-        public ICollection<Product> Products { get; set; } = new List<Product>(); // Product
+        public Order Order { get; set; }
+        public ICollection<Product> Products { get; set; }  // Product
     }
 }

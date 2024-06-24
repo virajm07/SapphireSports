@@ -22,7 +22,7 @@ namespace SapphireSports.Controllers
         // GET: Payments
         public async Task<IActionResult> Index()
         {
-            var sapphireSportsContext = _context.Payments.Include(p => p.Customer);
+            var sapphireSportsContext = _context.Payments.Include(p => p.Customer).Include(p => p.Order);
             return View(await sapphireSportsContext.ToListAsync());
         }
 
@@ -36,6 +36,7 @@ namespace SapphireSports.Controllers
 
             var payments = await _context.Payments
                 .Include(p => p.Customer)
+                .Include(p => p.Order)
                 .FirstOrDefaultAsync(m => m.PaymentID == id);
             if (payments == null)
             {
@@ -48,7 +49,8 @@ namespace SapphireSports.Controllers
         // GET: Payments/Create
         public IActionResult Create()
         {
-            ViewData["CustomerID"] = new SelectList(_context.Set<Customer>(), "CustomerID", "Address");
+            ViewData["CustomerID"] = new SelectList(_context.Customer, "CustomerID", "Address");
+            ViewData["OrderID"] = new SelectList(_context.Orders, "OrderID", "OrderDate");
             return View();
         }
 
@@ -57,7 +59,7 @@ namespace SapphireSports.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PaymentID,CustomerID,PayAmount,PaymentMethod,PaymentDate")] Payments payments)
+        public async Task<IActionResult> Create([Bind("PaymentID,OrderID,CustomerID,PayAmount,PaymentMethod,PaymentDate")] Payments payments)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +67,8 @@ namespace SapphireSports.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CustomerID"] = new SelectList(_context.Set<Customer>(), "CustomerID", "Address", payments.CustomerID);
+            ViewData["CustomerID"] = new SelectList(_context.Customer, "CustomerID", "Address", payments.CustomerID);
+            ViewData["OrderID"] = new SelectList(_context.Orders, "OrderID", "OrderDate", payments.OrderID);
             return View(payments);
         }
 
@@ -82,7 +85,8 @@ namespace SapphireSports.Controllers
             {
                 return NotFound();
             }
-            ViewData["CustomerID"] = new SelectList(_context.Set<Customer>(), "CustomerID", "Address", payments.CustomerID);
+            ViewData["CustomerID"] = new SelectList(_context.Customer, "CustomerID", "Address", payments.CustomerID);
+            ViewData["OrderID"] = new SelectList(_context.Orders, "OrderID", "OrderDate", payments.OrderID);
             return View(payments);
         }
 
@@ -91,7 +95,7 @@ namespace SapphireSports.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("PaymentID,CustomerID,PayAmount,PaymentMethod,PaymentDate")] Payments payments)
+        public async Task<IActionResult> Edit(int id, [Bind("PaymentID,OrderID,CustomerID,PayAmount,PaymentMethod,PaymentDate")] Payments payments)
         {
             if (id != payments.PaymentID)
             {
@@ -118,7 +122,8 @@ namespace SapphireSports.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CustomerID"] = new SelectList(_context.Set<Customer>(), "CustomerID", "Address", payments.CustomerID);
+            ViewData["CustomerID"] = new SelectList(_context.Customer, "CustomerID", "Address", payments.CustomerID);
+            ViewData["OrderID"] = new SelectList(_context.Orders, "OrderID", "OrderDate", payments.OrderID);
             return View(payments);
         }
 
@@ -132,6 +137,7 @@ namespace SapphireSports.Controllers
 
             var payments = await _context.Payments
                 .Include(p => p.Customer)
+                .Include(p => p.Order)
                 .FirstOrDefaultAsync(m => m.PaymentID == id);
             if (payments == null)
             {

@@ -1,14 +1,16 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SapphireSports.Models
 {
-    public class Orders
+    public class Order
     {
 
         [Key] public int OrderID { get; set; }
 
         [DisplayName("Customer ID")]
+        [ForeignKey("Customer")]
         public int CustomerID { get; set; }
 
         [Required]
@@ -20,15 +22,12 @@ namespace SapphireSports.Models
         [DataType(DataType.Date)]
         public required string OrderDate { get; set; }
 
-        [Required]
-        [DisplayName("Store ID")]
-        public int StoreID { get; set; }
-
+      
         // Navigation properties
 
-        public required Customer Customer { get; set; }
-        public required Cart Cart { get; set; }
-        public required Payments Payments { get; set; }
+        public  Customer Customer { get; set; }
+        public  Cart Cart { get; set; }
+        
 
     }
 }

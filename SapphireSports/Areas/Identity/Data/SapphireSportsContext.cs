@@ -24,7 +24,7 @@ public DbSet<SapphireSports.Models.Payments> Payments { get; set; } = default!;
 
 public DbSet<SapphireSports.Models.Cart> Cart { get; set; } = default!;
 
-public DbSet<SapphireSports.Models.Orders> Orders { get; set; } = default!;
+public DbSet<SapphireSports.Models.Order> Orders { get; set; } = default!;
 
 public DbSet<SapphireSports.Models.Staff> Staff { get; set; } = default!;
 

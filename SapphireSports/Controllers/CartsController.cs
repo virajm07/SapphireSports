@@ -22,7 +22,8 @@ namespace SapphireSports.Controllers
         // GET: Carts
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Cart.ToListAsync());
+            var sapphireSportsContext = _context.Cart.Include(c => c.Order);
+            return View(await sapphireSportsContext.ToListAsync());
         }
 
         // GET: Carts/Details/5
@@ -34,6 +35,7 @@ namespace SapphireSports.Controllers
             }
 
             var cart = await _context.Cart
+                .Include(c => c.Order)
                 .FirstOrDefaultAsync(m => m.CartID == id);
             if (cart == null)
             {
@@ -46,6 +48,7 @@ namespace SapphireSports.Controllers
         // GET: Carts/Create
         public IActionResult Create()
         {
+            ViewData["OrderID"] = new SelectList(_context.Orders, "OrderID", "OrderDate");
             return View();
         }
 
@@ -54,7 +57,7 @@ namespace SapphireSports.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CartID,ProductID,CustomerID,ListPrice,Quantity")] Cart cart)
+        public async Task<IActionResult> Create([Bind("CartID,ProductID,OrderID,ListPrice,Quantity")] Cart cart)
         {
             if (ModelState.IsValid)
             {
@@ -62,6 +65,7 @@ namespace SapphireSports.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["OrderID"] = new SelectList(_context.Orders, "OrderID", "OrderDate", cart.OrderID);
             return View(cart);
         }
 
@@ -78,6 +82,7 @@ namespace SapphireSports.Controllers
             {
                 return NotFound();
             }
+            ViewData["OrderID"] = new SelectList(_context.Orders, "OrderID", "OrderDate", cart.OrderID);
             return View(cart);
         }
 
@@ -86,7 +91,7 @@ namespace SapphireSports.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CartID,ProductID,CustomerID,ListPrice,Quantity")] Cart cart)
+        public async Task<IActionResult> Edit(int id, [Bind("CartID,ProductID,OrderID,ListPrice,Quantity")] Cart cart)
         {
             if (id != cart.CartID)
             {
@@ -113,6 +118,7 @@ namespace SapphireSports.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["OrderID"] = new SelectList(_context.Orders, "OrderID", "OrderDate", cart.OrderID);
             return View(cart);
         }
 
@@ -125,6 +131,7 @@ namespace SapphireSports.Controllers
             }
 
             var cart = await _context.Cart
+                .Include(c => c.Order)
                 .FirstOrDefaultAsync(m => m.CartID == id);
             if (cart == null)
             {

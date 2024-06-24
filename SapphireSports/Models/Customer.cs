@@ -35,9 +35,9 @@ namespace SapphireSports.Models
         public required string Email { get; set; }
 
         // Navigation properties
-        public ICollection<Orders> Orders { get; set; } = []; // Orders
-        public ICollection<Cart> Carts { get; set; } = []; // Carts
-        public ICollection<Payments> Payments { get; set; } = []; // Payments
+        public ICollection<Order> Orders { get; set; }// Orders
+        public ICollection<Cart> Carts { get; set; } // Carts
+        public ICollection<Payments> Payments { get; set; } // Payments
 
 
     }

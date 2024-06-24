@@ -30,7 +30,7 @@ namespace SapphireSports.Models
         public required string Email { get; set; }
 
 
-        public required Orders Orders { get; set; }
+        public required Order Orders { get; set; }
         public ICollection<Payments> Payments { get; set; } = []; // Payments
     }
 }

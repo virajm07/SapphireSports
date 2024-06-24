@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SapphireSports.Models
 {
@@ -7,6 +8,9 @@ namespace SapphireSports.Models
     {
         [Key]
         public  required int PaymentID { get; set; }
+
+        [ForeignKey("Order")]
+        public int OrderID { get; set; }
 
         [DisplayName("Customer ID")]
         public required int CustomerID { get; set; }
@@ -21,6 +25,8 @@ namespace SapphireSports.Models
         public required DateTime PaymentDate { get; set; }
 
         public required Customer Customer { get; set; }
+
+        public Order Order { get; set; }
 
 
     }

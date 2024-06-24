@@ -34,21 +34,21 @@ namespace SapphireSports.Controllers
                 return NotFound();
             }
 
-            var orders = await _context.Orders
+            var order = await _context.Orders
                 .Include(o => o.Customer)
                 .FirstOrDefaultAsync(m => m.OrderID == id);
-            if (orders == null)
+            if (order == null)
             {
                 return NotFound();
             }
 
-            return View(orders);
+            return View(order);
         }
 
         // GET: Orders/Create
         public IActionResult Create()
         {
-            ViewData["CustomerID"] = new SelectList(_context.Set<Customer>(), "CustomerID", "Address");
+            ViewData["CustomerID"] = new SelectList(_context.Customer, "CustomerID", "Address");
             return View();
         }
 
@@ -57,16 +57,16 @@ namespace SapphireSports.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("OrderID,CustomerID,OrderStatus,OrderDate,StoreID")] Orders orders)
+        public async Task<IActionResult> Create([Bind("OrderID,CustomerID,OrderStatus,OrderDate")] Order order)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(orders);
+                _context.Add(order);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CustomerID"] = new SelectList(_context.Set<Customer>(), "CustomerID", "Address", orders.CustomerID);
-            return View(orders);
+            ViewData["CustomerID"] = new SelectList(_context.Customer, "CustomerID", "Address", order.CustomerID);
+            return View(order);
         }
 
         // GET: Orders/Edit/5
@@ -77,13 +77,13 @@ namespace SapphireSports.Controllers
                 return NotFound();
             }
 
-            var orders = await _context.Orders.FindAsync(id);
-            if (orders == null)
+            var order = await _context.Orders.FindAsync(id);
+            if (order == null)
             {
                 return NotFound();
             }
-            ViewData["CustomerID"] = new SelectList(_context.Set<Customer>(), "CustomerID", "Address", orders.CustomerID);
-            return View(orders);
+            ViewData["CustomerID"] = new SelectList(_context.Customer, "CustomerID", "Address", order.CustomerID);
+            return View(order);
         }
 
         // POST: Orders/Edit/5
@@ -91,9 +91,9 @@ namespace SapphireSports.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("OrderID,CustomerID,OrderStatus,OrderDate,StoreID")] Orders orders)
+        public async Task<IActionResult> Edit(int id, [Bind("OrderID,CustomerID,OrderStatus,OrderDate")] Order order)
         {
-            if (id != orders.OrderID)
+            if (id != order.OrderID)
             {
                 return NotFound();
             }
@@ -102,12 +102,12 @@ namespace SapphireSports.Controllers
             {
                 try
                 {
-                    _context.Update(orders);
+                    _context.Update(order);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!OrdersExists(orders.OrderID))
+                    if (!OrderExists(order.OrderID))
                     {
                         return NotFound();
                     }
@@ -118,8 +118,8 @@ namespace SapphireSports.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CustomerID"] = new SelectList(_context.Set<Customer>(), "CustomerID", "Address", orders.CustomerID);
-            return View(orders);
+            ViewData["CustomerID"] = new SelectList(_context.Customer, "CustomerID", "Address", order.CustomerID);
+            return View(order);
         }
 
         // GET: Orders/Delete/5
@@ -130,15 +130,15 @@ namespace SapphireSports.Controllers
                 return NotFound();
             }
 
-            var orders = await _context.Orders
+            var order = await _context.Orders
                 .Include(o => o.Customer)
                 .FirstOrDefaultAsync(m => m.OrderID == id);
-            if (orders == null)
+            if (order == null)
             {
                 return NotFound();
             }
 
-            return View(orders);
+            return View(order);
         }
 
         // POST: Orders/Delete/5
@@ -146,17 +146,17 @@ namespace SapphireSports.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var orders = await _context.Orders.FindAsync(id);
-            if (orders != null)
+            var order = await _context.Orders.FindAsync(id);
+            if (order != null)
             {
-                _context.Orders.Remove(orders);
+                _context.Orders.Remove(order);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool OrdersExists(int id)
+        private bool OrderExists(int id)
         {
             return _context.Orders.Any(e => e.OrderID == id);
         }
