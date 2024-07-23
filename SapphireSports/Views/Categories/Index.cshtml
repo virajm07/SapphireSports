@@ -1,0 +1,65 @@
+﻿@model IEnumerable<SapphireSports.Models.Categories>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cricket)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Football)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Basketball)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rugby)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tennis)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Shoes)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cricket)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Football)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Basketball)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rugby)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tennis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Shoes)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.CategoriesID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.CategoriesID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.CategoriesID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

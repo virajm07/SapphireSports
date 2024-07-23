@@ -1,0 +1,54 @@
+﻿@model SapphireSports.Models.Categories
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Categories</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Cricket)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Cricket)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Football)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Football)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Basketball)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Basketball)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Rugby)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Rugby)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Tennis)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Tennis)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Shoes)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Shoes)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.CategoriesID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

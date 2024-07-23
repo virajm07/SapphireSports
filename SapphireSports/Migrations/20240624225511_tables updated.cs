@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SapphireSports.Migrations
 {
     /// <inheritdoc />
-    public partial class tablesupdated : Migration
+    public partial class Tablesupdated : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

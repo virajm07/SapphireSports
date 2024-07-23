@@ -13,7 +13,7 @@ namespace SapphireSports.Migrations
 {
     [DbContext(typeof(SapphireSportsContext))]
     [Migration("20240624225511_tables updated")]
-    partial class tablesupdated
+    partial class Tablesupdated
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
