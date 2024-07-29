@@ -24,6 +24,7 @@ namespace SapphireSports.Models
         [Required]
         [DisplayName("Contact Number")]
         [RegularExpression("((^\\([0]\\d{1}\\))(\\d{7}$)|(^\\([0][2]\\d{1}\\))(\\d{6,8}$)|([0][8][0][0])([\\s])(\\d{5,8}$))", ErrorMessage = "Please enter a valid phone number")]
+        //Validation for phone numbers (doesn't allow any numbers to be written, needs a format such as (021)
         public required string ContactNumber { get; set; }
 
         [Required]
@@ -31,6 +32,7 @@ namespace SapphireSports.Models
 
 
         public required Order Orders { get; set; }
-        public ICollection<Payments> Payments { get; set; } = []; // Payments
+        public ICollection<Payments> Payments { get; set; } = [];
+        //One to many relationship with the payments table
     }
 }

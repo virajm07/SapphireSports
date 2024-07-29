@@ -27,6 +27,7 @@ namespace SapphireSports.Models
 
         public  Customer Customer { get; set; }
         public  Cart Cart { get; set; }
+        //One to one relationship with the Cart table
         
 
     }

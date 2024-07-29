@@ -25,19 +25,24 @@ namespace SapphireSports.Models
         [Required]
         [DisplayName("Contact Number")]
         [RegularExpression("((^\\([0]\\d{1}\\))(\\d{7}$)|(^\\([0][2]\\d{1}\\))(\\d{6,8}$)|([0][8][0][0])([\\s])(\\d{5,8}$))", ErrorMessage = "Please enter a valid phone number")]
+        //Validation for phone numbers (doesn't allow any numbers to be written, needs a format such as (021)
         public required string ContactNumber { get; set; }
 
         [Required]
         [DataType(DataType.Date)]
+        //Only allows the user to enter a date field (cannot write letters)
         public required string DOB { get; set; }
 
         [Required]
         public required string Email { get; set; }
 
         // Navigation properties
-        public ICollection<Order> Orders { get; set; }// Orders
-        public ICollection<Cart> Carts { get; set; } // Carts
-        public ICollection<Payments> Payments { get; set; } // Payments
+        public ICollection<Order> Orders { get; set; }
+        //One to many relationship with the Orders table
+        public ICollection<Cart> Carts { get; set; }
+        //One to many relationship with the Carts table
+        public ICollection<Payments> Payments { get; set; }
+        //One to many relationship with the Payments table
 
 
     }

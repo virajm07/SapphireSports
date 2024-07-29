@@ -23,10 +23,10 @@ namespace SapphireSports.Models
 
         [DisplayName("Payment Date")]
         public required DateTime PaymentDate { get; set; }
-
         public required Customer Customer { get; set; }
 
         public Order Order { get; set; }
+        //One to one relationship with the Order table
 
 
     }
