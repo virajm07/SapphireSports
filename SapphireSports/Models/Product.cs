@@ -8,17 +8,22 @@ namespace SapphireSports.Models
 
         [Key]
         public int ProductID { get; set; }
+        //Indicates that ProductID is the primary key in this table
 
         [DisplayName("Product Name")]
+        //Will display as "Product Name"
         public required string ProductName { get; set; }
 
         [DisplayName("Brand ID")]
+        //Will display as "Brand ID"
         public required string BrandID { get; set; }
 
         [DisplayName("Model Year")]
+        //Will display as "Model Year"
         public required string ModelYear { get; set; }
 
         [DisplayName("Model Name")]
+        //Will display as "Model Name"
         public required string ModelName { get; set; }
 
         public required string Price { get; set; }

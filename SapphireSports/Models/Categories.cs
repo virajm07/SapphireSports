@@ -6,6 +6,7 @@ namespace SapphireSports.Models
     {
 
         [Key] public int CategoriesID { get; set; }
+        //Indicates that CategoriesID is the primary key in this table
         public required string Cricket { get; set; }
 
         public required string Football { get; set; }
@@ -18,6 +19,7 @@ namespace SapphireSports.Models
 
         public required string Shoes { get; set; }
 
-        public ICollection<Product> Products { get; set; } = new List<Product>(); // Product
+        public ICollection<Product> Products { get; set; } = new List<Product>();
+        //One to many relationship with the Products table
     }
 }

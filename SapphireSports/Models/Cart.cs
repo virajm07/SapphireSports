@@ -5,6 +5,7 @@ namespace SapphireSports.Models
     public class Cart
     {
         [Key]
+        //Indicates that CartID is the primary key in this table
         public int CartID { get; set; }
 
         [Required]
@@ -19,6 +20,7 @@ namespace SapphireSports.Models
         [Required]
         public int Quantity { get; set; }
         public Order Order { get; set; }
-        public ICollection<Product> Products { get; set; }  // Product
+        public ICollection<Product> Products { get; set; }
+        //One to many relationship with the Products table
     }
 }
