@@ -10,7 +10,7 @@ namespace SapphireSports.Models
         [Key] public int OrderID { get; set; }
         //Indicates that OrderID is the primary key in this table
 
-        [DisplayName("Customer ID")]
+        [DisplayName("Customer Name")]
         //Will display as "Customer ID"
         [ForeignKey("Customer")]
         //Indicates that the Customer table is the foreign key

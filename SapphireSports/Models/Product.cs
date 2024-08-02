@@ -14,7 +14,7 @@ namespace SapphireSports.Models
         //Will display as "Product Name"
         public required string ProductName { get; set; }
 
-        [DisplayName("Brand ID")]
+        [DisplayName("Brand Name")]
         //Will display as "Brand ID"
         public required string BrandID { get; set; }
 
@@ -26,7 +26,7 @@ namespace SapphireSports.Models
         //Will display as "Model Name"
         public required string ModelName { get; set; }
 
-        public required string Price { get; set; }
+        public required int Price { get; set; }
         // Navigation properties
         public ICollection<Categories> Categories { get; set; } = new List<Categories>(); 
         //One to many relationship with the Categories table

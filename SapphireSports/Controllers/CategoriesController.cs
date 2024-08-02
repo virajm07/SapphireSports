@@ -56,7 +56,7 @@ namespace SapphireSports.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("CategoriesID,Cricket,Football,Basketball,Rugby,Tennis,Shoes")] Categories categories)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 _context.Add(categories);
                 await _context.SaveChangesAsync();
@@ -93,7 +93,7 @@ namespace SapphireSports.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 try
                 {

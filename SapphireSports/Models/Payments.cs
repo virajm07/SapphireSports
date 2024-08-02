@@ -14,7 +14,7 @@ namespace SapphireSports.Models
         //Will display as "Order"
         public int OrderID { get; set; }
 
-        [DisplayName("Customer ID")]
+        [DisplayName("Customer Name")]
         //Will display as "Customer ID"
         public required int CustomerID { get; set; }
 

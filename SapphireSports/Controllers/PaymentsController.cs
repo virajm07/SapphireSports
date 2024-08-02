@@ -61,7 +61,7 @@ namespace SapphireSports.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("PaymentID,OrderID,CustomerID,PayAmount,PaymentMethod,PaymentDate")] Payments payments)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 _context.Add(payments);
                 await _context.SaveChangesAsync();
@@ -102,7 +102,7 @@ namespace SapphireSports.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 try
                 {

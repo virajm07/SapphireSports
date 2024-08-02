@@ -48,7 +48,7 @@ namespace SapphireSports.Controllers
         // GET: Orders/Create
         public IActionResult Create()
         {
-            ViewData["CustomerID"] = new SelectList(_context.Customer, "CustomerID", "Address");
+            ViewData["CustomerID"] = new SelectList(_context.Customer, "CustomerID", "FirstName");
             return View();
         }
 
@@ -59,13 +59,13 @@ namespace SapphireSports.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("OrderID,CustomerID,OrderStatus,OrderDate")] Order order)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 _context.Add(order);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CustomerID"] = new SelectList(_context.Customer, "CustomerID", "Address", order.CustomerID);
+            ViewData["CustomerID"] = new SelectList(_context.Customer, "CustomerID", "FirstName", order.CustomerID);
             return View(order);
         }
 
@@ -82,7 +82,7 @@ namespace SapphireSports.Controllers
             {
                 return NotFound();
             }
-            ViewData["CustomerID"] = new SelectList(_context.Customer, "CustomerID", "Address", order.CustomerID);
+            ViewData["CustomerID"] = new SelectList(_context.Customer, "CustomerID", "FirstName", order.CustomerID);
             return View(order);
         }
 
@@ -98,7 +98,7 @@ namespace SapphireSports.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 try
                 {
@@ -118,7 +118,7 @@ namespace SapphireSports.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CustomerID"] = new SelectList(_context.Customer, "CustomerID", "Address", order.CustomerID);
+            ViewData["CustomerID"] = new SelectList(_context.Customer, "CustomerID", "FirstName", order.CustomerID);
             return View(order);
         }
 
