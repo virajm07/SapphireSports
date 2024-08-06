@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace SapphireSports.Models
 {
@@ -9,12 +10,15 @@ namespace SapphireSports.Models
         public int CartID { get; set; }
 
         [Required]
-        public int ProductID { get; set; }
+        [DisplayName("Product Name")]
+        public string ProductID { get; set; }
 
         [Required]
+        [DisplayName("Order Date")]
         public int OrderID { get; set; }
 
         [Required]
+        [DisplayName("Price")]
         public int ListPrice { get; set; }
 
         [Required]
