@@ -11,7 +11,7 @@ namespace SapphireSports.Models
 
         [Required]
         [DisplayName("Product Name")]
-        public string ProductID { get; set; }
+        public int ProductID { get; set; }
 
         [Required]
         [DisplayName("Order Date")]
@@ -24,7 +24,7 @@ namespace SapphireSports.Models
         [Required]
         public int Quantity { get; set; }
         public Order Order { get; set; }
-        public ICollection<Product> Products { get; set; }
-        //One to many relationship with the Products table
+        public Product Product { get; set; }
+        //One to one relationship with the Products table
     }
 }

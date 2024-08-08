@@ -22,7 +22,7 @@ namespace SapphireSports.Controllers
         // GET: Carts
         public async Task<IActionResult> Index()
         {
-            var sapphireSportsContext = _context.Cart.Include(c => c.Order);
+            var sapphireSportsContext = _context.Cart.Include(c => c.Order).Include(c => c.Product);
             return View(await sapphireSportsContext.ToListAsync());
         }
 
@@ -36,6 +36,7 @@ namespace SapphireSports.Controllers
 
             var cart = await _context.Cart
                 .Include(c => c.Order)
+                .Include(c => c.Product)
                 .FirstOrDefaultAsync(m => m.CartID == id);
             if (cart == null)
             {
@@ -49,6 +50,7 @@ namespace SapphireSports.Controllers
         public IActionResult Create()
         {
             ViewData["OrderID"] = new SelectList(_context.Orders, "OrderID", "OrderDate");
+            ViewData["ProductID"] = new SelectList(_context.Product, "ProductID", "ProductID");
             return View();
         }
 
@@ -66,6 +68,7 @@ namespace SapphireSports.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["OrderID"] = new SelectList(_context.Orders, "OrderID", "OrderDate", cart.OrderID);
+            ViewData["ProductID"] = new SelectList(_context.Product, "ProductID", "ProductID", cart.ProductID);
             return View(cart);
         }
 
@@ -83,6 +86,7 @@ namespace SapphireSports.Controllers
                 return NotFound();
             }
             ViewData["OrderID"] = new SelectList(_context.Orders, "OrderID", "OrderDate", cart.OrderID);
+            ViewData["ProductID"] = new SelectList(_context.Product, "ProductID", "ProductID", cart.ProductID);
             return View(cart);
         }
 
@@ -119,6 +123,7 @@ namespace SapphireSports.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["OrderID"] = new SelectList(_context.Orders, "OrderID", "OrderDate", cart.OrderID);
+            ViewData["ProductID"] = new SelectList(_context.Product, "ProductID", "ProductID", cart.ProductID);
             return View(cart);
         }
 
@@ -132,6 +137,7 @@ namespace SapphireSports.Controllers
 
             var cart = await _context.Cart
                 .Include(c => c.Order)
+                .Include(c => c.Product)
                 .FirstOrDefaultAsync(m => m.CartID == id);
             if (cart == null)
             {

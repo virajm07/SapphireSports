@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SapphireSports.Areas.Identity.Data;
 
@@ -11,9 +12,11 @@ using SapphireSports.Areas.Identity.Data;
 namespace SapphireSports.Migrations
 {
     [DbContext(typeof(SapphireSportsContext))]
-    partial class SapphireSportsContextModelSnapshot : ModelSnapshot
+    [Migration("20240808023129_modelsupdated")]
+    partial class modelsupdated
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
