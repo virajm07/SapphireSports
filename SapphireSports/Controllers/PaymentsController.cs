@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -27,6 +28,7 @@ namespace SapphireSports.Controllers
         }
 
         // GET: Payments/Details/5
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -47,6 +49,7 @@ namespace SapphireSports.Controllers
         }
 
         // GET: Payments/Create
+        [Authorize]
         public IActionResult Create()
         {
             ViewData["CustomerID"] = new SelectList(_context.Customer, "CustomerID", "Address");
@@ -57,6 +60,7 @@ namespace SapphireSports.Controllers
         // POST: Payments/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("PaymentID,OrderID,CustomerID,PayAmount,PaymentMethod,PaymentDate")] Payments payments)
@@ -73,6 +77,7 @@ namespace SapphireSports.Controllers
         }
 
         // GET: Payments/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -93,6 +98,7 @@ namespace SapphireSports.Controllers
         // POST: Payments/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("PaymentID,OrderID,CustomerID,PayAmount,PaymentMethod,PaymentDate")] Payments payments)
@@ -128,6 +134,7 @@ namespace SapphireSports.Controllers
         }
 
         // GET: Payments/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -148,6 +155,7 @@ namespace SapphireSports.Controllers
         }
 
         // POST: Payments/Delete/5
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

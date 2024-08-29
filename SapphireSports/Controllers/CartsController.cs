@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -27,6 +28,7 @@ namespace SapphireSports.Controllers
         }
 
         // GET: Carts/Details/5
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -47,6 +49,7 @@ namespace SapphireSports.Controllers
         }
 
         // GET: Carts/Create
+        [Authorize]
         public IActionResult Create()
         {
             ViewData["OrderID"] = new SelectList(_context.Orders, "OrderID", "OrderDate");
@@ -57,6 +60,7 @@ namespace SapphireSports.Controllers
         // POST: Carts/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("CartID,ProductID,OrderID,ListPrice,Quantity")] Cart cart)
@@ -73,6 +77,7 @@ namespace SapphireSports.Controllers
         }
 
         // GET: Carts/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -93,6 +98,7 @@ namespace SapphireSports.Controllers
         // POST: Carts/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("CartID,ProductID,OrderID,ListPrice,Quantity")] Cart cart)
@@ -128,6 +134,7 @@ namespace SapphireSports.Controllers
         }
 
         // GET: Carts/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -148,6 +155,7 @@ namespace SapphireSports.Controllers
         }
 
         // POST: Carts/Delete/5
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

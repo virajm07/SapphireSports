@@ -4,6 +4,15 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SapphireSports.Models
 {
+    public enum Grade
+    {
+        [Display(Name = "Order Recieved")]
+        OrderRecieved,
+        [Display(Name = "Sent for Shipping")]
+        SentForShipping,
+        [Display(Name = "Order Shipped")]
+        OrderShipped
+    }
     public class Order
     {
 
@@ -27,6 +36,8 @@ namespace SapphireSports.Models
         [DataType(DataType.Date)]
         //Only allows the user to enter a date field (cannot write letters)
         public required string OrderDate { get; set; }
+
+        public Grade? Grade { get; set; }
 
       
         // Navigation properties

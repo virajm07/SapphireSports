@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<SapphireSports.Models.Order>
 
 @{
-    ViewData["Title"] = "Orders";
+    ViewData["Title"] = "Index";
 }
 
-<h1>Orders</h1>
+<h1>Index</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -17,6 +17,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.OrderDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Grade)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Customer)
@@ -32,6 +35,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.OrderDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Grade)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Customer.Address)

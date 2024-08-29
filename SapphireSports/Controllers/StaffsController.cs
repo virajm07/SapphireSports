@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -26,6 +27,7 @@ namespace SapphireSports.Controllers
         }
 
         // GET: Staffs/Details/5
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -44,6 +46,7 @@ namespace SapphireSports.Controllers
         }
 
         // GET: Staffs/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -52,6 +55,7 @@ namespace SapphireSports.Controllers
         // POST: Staffs/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("StaffId,FirstName,LastName,DOB,ContactNumber,Email")] Staff staff)
@@ -66,6 +70,7 @@ namespace SapphireSports.Controllers
         }
 
         // GET: Staffs/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -84,6 +89,7 @@ namespace SapphireSports.Controllers
         // POST: Staffs/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("StaffId,FirstName,LastName,DOB,ContactNumber,Email")] Staff staff)
@@ -117,6 +123,7 @@ namespace SapphireSports.Controllers
         }
 
         // GET: Staffs/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -135,6 +142,7 @@ namespace SapphireSports.Controllers
         }
 
         // POST: Staffs/Delete/5
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
