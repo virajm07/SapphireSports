@@ -21,6 +21,7 @@ namespace SapphireSports.Controllers
         }
 
         // GET: Carts
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             var sapphireSportsContext = _context.Cart.Include(c => c.Order).Include(c => c.Product);
