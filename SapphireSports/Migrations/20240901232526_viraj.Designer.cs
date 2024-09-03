@@ -12,15 +12,15 @@ using SapphireSports.Areas.Identity.Data;
 namespace SapphireSports.Migrations
 {
     [DbContext(typeof(SapphireSportsContext))]
-    [Migration("20240829025049_virajpig")]
-    partial class virajpig
+    [Migration("20240901232526_viraj")]
+    partial class viraj
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.7")
+                .HasAnnotation("ProductVersion", "8.0.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -362,20 +362,22 @@ namespace SapphireSports.Migrations
                     b.Property<int>("CustomerID")
                         .HasColumnType("int");
 
-                    b.Property<int?>("Grade")
-                        .HasColumnType("int");
-
                     b.Property<string>("OrderDate")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("OrderStatus")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("OrderStatus")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StaffId")
+                        .HasColumnType("int");
 
                     b.HasKey("OrderID");
 
                     b.HasIndex("CustomerID");
+
+                    b.HasIndex("StaffId")
+                        .IsUnique();
 
                     b.ToTable("Orders");
                 });
@@ -451,7 +453,12 @@ namespace SapphireSports.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("StaffId")
+                        .HasColumnType("int");
+
                     b.HasKey("ProductID");
+
+                    b.HasIndex("StaffId");
 
                     b.ToTable("Product");
                 });
@@ -484,12 +491,7 @@ namespace SapphireSports.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("OrdersOrderID")
-                        .HasColumnType("int");
-
                     b.HasKey("StaffId");
-
-                    b.HasIndex("OrdersOrderID");
 
                     b.ToTable("Staff");
                 });
@@ -591,7 +593,15 @@ namespace SapphireSports.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("SapphireSports.Models.Staff", "Staff")
+                        .WithOne("Orders")
+                        .HasForeignKey("SapphireSports.Models.Order", "StaffId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Customer");
+
+                    b.Navigation("Staff");
                 });
 
             modelBuilder.Entity("SapphireSports.Models.Payments", b =>
@@ -621,15 +631,11 @@ namespace SapphireSports.Migrations
                     b.Navigation("Order");
                 });
 
-            modelBuilder.Entity("SapphireSports.Models.Staff", b =>
+            modelBuilder.Entity("SapphireSports.Models.Product", b =>
                 {
-                    b.HasOne("SapphireSports.Models.Order", "Orders")
-                        .WithMany()
-                        .HasForeignKey("OrdersOrderID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Orders");
+                    b.HasOne("SapphireSports.Models.Staff", null)
+                        .WithMany("Products")
+                        .HasForeignKey("StaffId");
                 });
 
             modelBuilder.Entity("SapphireSports.Models.Customer", b =>
@@ -656,7 +662,12 @@ namespace SapphireSports.Migrations
 
             modelBuilder.Entity("SapphireSports.Models.Staff", b =>
                 {
+                    b.Navigation("Orders")
+                        .IsRequired();
+
                     b.Navigation("Payments");
+
+                    b.Navigation("Products");
                 });
 #pragma warning restore 612, 618
         }

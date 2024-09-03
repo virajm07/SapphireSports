@@ -35,6 +35,7 @@ namespace SapphireSports.Models
         [Required]
         public required string Email { get; set; }
 
+        public ICollection<Product> Products { get; set; }
 
         public required Order Orders { get; set; }
         public ICollection<Payments> Payments { get; set; } = [];
