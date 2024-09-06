@@ -54,7 +54,7 @@ namespace SapphireSports.Controllers
         public IActionResult Create()
         {
             ViewData["CustomerID"] = new SelectList(_context.Customer, "CustomerID", "FirstName");
-            ViewData["StaffId"] = new SelectList(_context.Staff, "StaffId", "StaffId");
+            ViewData["StaffId"] = new SelectList(_context.Staff, "StaffId", "FirstName");
             return View();
         }
 

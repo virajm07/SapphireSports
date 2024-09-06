@@ -37,7 +37,7 @@ namespace SapphireSports.Models
 
         public ICollection<Product> Products { get; set; }
 
-        public required Order Orders { get; set; }
+        public ICollection<Order> Orders { get; set; }
         public ICollection<Payments> Payments { get; set; } = [];
         //One to many relationship with the payments table
     }
