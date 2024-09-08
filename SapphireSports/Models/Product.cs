@@ -10,7 +10,7 @@ namespace SapphireSports.Models
         public int ProductID { get; set; }
         //Indicates that ProductID is the primary key in this table
 
-        [DisplayName("Product Name")]
+        [DisplayName("Sport")]
         //Will display as "Product Name"
         public required string ProductName { get; set; }
 
