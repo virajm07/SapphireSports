@@ -19,5 +19,14 @@ html {
 
 body {
     margin-bottom: 60px;
-    background-image: url(https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvcHgxMTA1NzE5LWltYWdlLWt3eXI3eG91LmpwZw.jpg);
+    background-image: url('../images/sapphire background.jpg');
+    color : ghostwhite
+}
+
+th {
+    color: white;
+}
+
+tr {
+    color: white;
 }
