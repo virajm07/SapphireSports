@@ -21,9 +21,37 @@ namespace SapphireSports.Controllers
         }
 
         // GET: Products
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sortOrder, string searchString)
         {
-            return View(await _context.Product.ToListAsync());
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "product_name" : "";
+            ViewData["DateSortParm"] = sortOrder == "brand_name" ? "model_year" : "brand_name";
+            ViewData["CurrentFilter"] = searchString;
+            var products = from s in _context.Product
+                           select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                products = products.Where(s => s.ModelName.Contains(searchString)
+                                        || s.BrandID.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "product_name":
+                    products = products.OrderByDescending(s => s.ProductName);
+                    break;
+                case "brand_name":
+                    products = products.OrderBy(s => s.BrandID);
+                    break;
+                case "model_year":
+                    products = products.OrderByDescending(s => s.ModelYear);
+                    break;
+                case "price":
+                    products = products.OrderByDescending(s => s.Price);
+                    break;
+                default:
+                    products = products.OrderBy(s => s.ModelName);
+                    break;
+            }
+            return View(await products.AsNoTracking().ToListAsync());
         }
 
         // GET: Products/Details/5

@@ -46,11 +46,11 @@ namespace SapphireSports.Models
         //Indicates that ProductID is the primary key in this table
 
         [DisplayName("Category")]
-        //Will display as "Product Name"
+        //Will display as "Category"
         public required string ProductName { get; set; }
 
         [DisplayName("Brand Name")]
-        //Will display as "Brand ID"
+        //Will display as "Brand Name"
         public required string BrandID { get; set; }
 
         [DisplayName("Model Year")]
