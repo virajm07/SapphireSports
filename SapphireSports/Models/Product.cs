@@ -2,7 +2,42 @@
 using System.ComponentModel.DataAnnotations;
 
 namespace SapphireSports.Models
+
+{    
+        public enum Year
+    {
+        [Display(Name = "2025")]
+        Year2025,
+        [Display(Name = "2024")]
+        Year2024,
+        [Display(Name = "2023")]
+        Year2023,
+        [Display(Name = "2022")]
+        Year2022,
+        [Display(Name = "2021")]
+        Year2021,
+        [Display(Name = "2020")]
+        Year2020,
+    }
+
+
+    public enum Category
 {
+    [Display(Name = "Cricket")]
+    Cricket,
+    [Display(Name = "Football")]
+    Football,
+    [Display(Name = "Basketball")]
+    Basketball,
+    [Display(Name = "Rugby")]
+    Rugby,
+    [Display(Name = "Tennis")]
+    Tennis,
+    [Display(Name = "Shoes")]
+    Shoes
+    }
+
+
     public class Product
     {
 
@@ -10,7 +45,7 @@ namespace SapphireSports.Models
         public int ProductID { get; set; }
         //Indicates that ProductID is the primary key in this table
 
-        [DisplayName("Sport")]
+        [DisplayName("Category")]
         //Will display as "Product Name"
         public required string ProductName { get; set; }
 
@@ -36,3 +71,4 @@ namespace SapphireSports.Models
         //One to many relationship with the Payments table
     }
 }
+

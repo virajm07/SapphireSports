@@ -14,7 +14,8 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="ProductName" class="control-label"></label>
-                <input asp-for="ProductName" class="form-control" />
+                <select asp-for="ProductName" class="form-control" asp-items="@Html.GetEnumSelectList(typeof(Category))">
+                </select>
                 <span asp-validation-for="ProductName" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -24,7 +25,8 @@
             </div>
             <div class="form-group">
                 <label asp-for="ModelYear" class="control-label"></label>
-                <input asp-for="ModelYear" class="form-control" />
+                <select asp-for="ModelYear" class="form-control" asp-items="@Html.GetEnumSelectList(typeof(Year))">
+                </select>
                 <span asp-validation-for="ModelYear" class="text-danger"></span>
             </div>
             <div class="form-group">
