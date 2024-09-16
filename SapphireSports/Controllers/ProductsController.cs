@@ -45,10 +45,10 @@ namespace SapphireSports.Controllers
                     products = products.OrderByDescending(s => s.ModelYear);
                     break;
                 case "price":
-                    products = products.OrderByDescending(s => s.Price);
+                    products = products.OrderBy(s => s.Price);
                     break;
                 default:
-                    products = products.OrderBy(s => s.ModelName);
+                    products = products.OrderByDescending(s => s.ModelName);
                     break;
             }
             return View(await products.AsNoTracking().ToListAsync());
