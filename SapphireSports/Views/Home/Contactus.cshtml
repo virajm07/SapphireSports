@@ -5,18 +5,78 @@
 
 
 
-<h4><strong>Contact Information:</strong></h4>
-<p><img src="~/images/phone-circle-removebg-preview.png" height="20" width="20"/> +64 21345678</p>
-<a href="https://mail.google.com/mail/u/0/#inbox?compose=VpCqJTCxSPTFwRWPbbplVcVtPSfkxDzNNlKkxNWxWmGXXlMdGbmrJTspMGprmPKbZlgxHtg" target="_blank" class="text-light"<img src="~/images/email_icon_2-removebg-preview.png" height="20" width="20" /> sapphiresports@gmail.com</a>
-<p class="text-dark">
-    <h4><strong>Address:</strong></h4>
-<p>69 Dominion Road, Mt Eden, Auckland 1024</p>
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6383.626431329809!2d174.7497893761294!3d-36.87088948074295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d0d47c80226d2a9%3A0xed90f7729e3432ca!2s69%20Dominion%20Road%2C%20Mount%20Eden%2C%20Auckland%201024!5e0!3m2!1sen!2snz!4v1726050095777!5m2!1sen!2snz" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-<br/> 
-<a href="https://www.google.com/maps/search/?api=1&query=69+Dominion+Road,+Mt+Eden,+1024,+Auckland" target="_blank" class="text-light">View on Google Maps</a>
-<h4><strong>Trading hours:</strong></h4>
-<p>Monday-Friday: 9am-6pm</p>
-<p>Saturday: 10am-5pm</p>
-<p>Sunday: Closed</p>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        input[type=text], select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: vertical;
+        }
+
+        input[type=submit] {
+            background-color: #000;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+            input[type=submit]:hover {
+                background-color: #000;
+            }
+
+    </style>
+</head>
+<body>
+
+    <div class="container p-5 my-5 bg-dark text-white rounded">
+        <h1>Contact Us</h1>
+        <h5>021 234 5678</h5>
+        <h5>sapphiresports@gmail.com</h5>
+    </div>
+
+
+    <div class="container">
+        <form action="/action_page.php">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" name="firstname" placeholder="Your first name">
+
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" name="lastname" placeholder="Your last name">
+
+            <label for="subject">Subject</label>
+            <textarea id="subject" name="subject" placeholder="Write your message here" style="height:200px"></textarea>
+
+            <input type="submit" value="Send">
+
+            <h4><strong>Address:</strong></h4>
+            <p>69 Dominion Road, Mt Eden, Auckland 1024</p>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6383.626431329809!2d174.7497893761294!3d-36.87088948074295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d0d47c80226d2a9%3A0xed90f7729e3432ca!2s69%20Dominion%20Road%2C%20Mount%20Eden%2C%20Auckland%201024!5e0!3m2!1sen!2snz!4v1726050095777!5m2!1sen!2snz" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <br />
+            <a href="https://www.google.com/maps/search/?api=1&query=69+Dominion+Road,+Mt+Eden,+1024,+Auckland" target="_blank" class="text-light">View on Google Maps</a>
+            <h4><strong>Trading hours:</strong></h4>
+            <p>Monday-Friday: 9am-6pm</p>
+            <p>Saturday: 10am-5pm</p>
+            <p>Sunday: Closed</p>
+        </form>
+    </div>
+
+    </body>
 
 
