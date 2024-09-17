@@ -33,9 +33,6 @@
                 <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">@Html.DisplayNameFor(model => model.ModelYear)</a>
             </th>
             <th>
-                <a asp-action="Index" asp-route-sortOrder="@ViewData["DateSortParm"]">@Html.DisplayNameFor(model => model.ModelName)</a>
-            </th>
-            <th>
                 <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">@Html.DisplayNameFor(model => model.Price)</a>
             </th>
             <th></th>
@@ -52,9 +49,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ModelYear)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ModelName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Price)

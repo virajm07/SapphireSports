@@ -49,7 +49,7 @@ namespace SapphireSports.Models
         //Will display as "Category"
         public required string ProductName { get; set; }
 
-        [DisplayName("Brand Name")]
+        [DisplayName("Product Name")]
         //Will display as "Brand Name"
         public required string BrandID { get; set; }
 
