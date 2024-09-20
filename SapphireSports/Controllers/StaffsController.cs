@@ -11,6 +11,7 @@ using SapphireSports.Models;
 
 namespace SapphireSports.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class StaffsController : Controller
     {
         private readonly SapphireSportsContext _context;

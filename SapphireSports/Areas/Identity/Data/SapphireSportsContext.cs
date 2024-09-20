@@ -31,18 +31,18 @@ public class SapphireSportsContext : IdentityDbContext<IdentityUser>
             new IdentityUser
             {
                 Id = "1",
-                UserName = "admin@example.com",
-                NormalizedUserName = "ADMIN@EXAMPLE>COM",
-                Email = "admin@example.com",
-                NormalizedEmail = "ADMIN@EXAMPLE.COM",
+                UserName = "Admin",
+                NormalizedUserName = "ADMIN",
+                Email = "admin@sapphiresports.com",
+                NormalizedEmail = "ADMIN@SAPPHIRESPORTS.COM",
                 EmailConfirmed = true,
                 PasswordHash = harsher.HashPassword(null, "Admin123")
             },
             new IdentityUser
             {
                 Id = "2",
-                UserName = "employee@example.com",
-                NormalizedUserName = "EMPLOYEE@EXAMPLE>COM",
+                UserName = "Employee",
+                NormalizedUserName = "EMPLOYEE",
                 Email = "employee@example.com",
                 NormalizedEmail = "EMPLOYEE@EXAMPLE.COM",
                 EmailConfirmed = true,
